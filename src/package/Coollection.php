@@ -456,7 +456,7 @@ class Coollection implements
      * @param  mixed  $key
      * @return bool
      */
-    public function offsetExists($key)
+    public function offsetExists($key): bool
     {
         return array_key_exists($key, $this->items);
     }
@@ -467,7 +467,7 @@ class Coollection implements
      * @param  mixed  $key
      * @return mixed
      */
-    public function offsetGet($key)
+    public function offsetGet($key): mixed
     {
         if (!isset($this->items[$key])) {
             return null;
@@ -483,7 +483,7 @@ class Coollection implements
      * @param  mixed  $value
      * @return void
      */
-    public function offsetSet($key, $value)
+    public function offsetSet($key, $value): void
     {
         if (is_null($key)) {
             $this->items[] = $value;
@@ -498,7 +498,7 @@ class Coollection implements
      * @param  string  $key
      * @return void
      */
-    public function offsetUnset($key)
+    public function offsetUnset($key): void
     {
         unset($this->items[$key]);
     }
@@ -578,7 +578,7 @@ class Coollection implements
      * which is a value of any type other than a resource.
      * @since 5.4.0
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->call('jsonSerialize');
     }
@@ -592,7 +592,7 @@ class Coollection implements
      * The return value is cast to an integer.
      * @since 5.1.0
      */
-    public function count()
+    public function count(): int
     {
         return $this->call('count');
     }
@@ -604,7 +604,7 @@ class Coollection implements
      * <b>Traversable</b>
      * @since 5.0.0
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return $this->call('getIterator');
     }
